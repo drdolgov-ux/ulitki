@@ -93,5 +93,38 @@
 
   <p class="sig">Сергей</p>
 </section>
+<script>
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    if(q.has('me')){localStorage.setItem('ulitki_me','1');}
+    if(localStorage.getItem('ulitki_me')==='1')return;
+  }catch(e){}
+  var U='https://docs.google.com/forms/d/e/1FAIpQLSdOUt0lgvBzLKNkCybZZ_szyg4NAybZ7tsuIPpaYbAcd5b0rA/formResponse';
+  function dev(){var u=navigator.userAgent;return /iPhone/.test(u)?'iPhone':/iPad/.test(u)?'iPad':/Android/.test(u)?'Android':/Macintosh/.test(u)?'Mac':/Windows/.test(u)?'Windows':'другое';}
+  function info(){
+    var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone;}catch(e){}
+    var d=new Date(),t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+    var src='';try{src=new URLSearchParams(location.search).get('utm_source')||'';}catch(e){}
+    return [t+' местное',tz,navigator.language,dev(),screen.width+'x'+screen.height,src?'из: '+src:'без метки'].join(' · ');
+  }
+  function send(ev){
+    try{
+      var b=new URLSearchParams();b.set('entry.1085521144',ev+' · '+info());
+      fetch(U,{method:'POST',mode:'no-cors',body:b,keepalive:true}).catch(function(){});
+    }catch(e){}
+  }
+  var opened=false;
+  function onOpen(){if(opened)return;opened=true;send('ОТКРЫТА');}
+  if(document.readyState==='complete')onOpen();else window.addEventListener('load',onOpen);
+  setTimeout(onOpen,3000);
+  var done=false,sig=document.querySelector('.sig');
+  if(sig&&'IntersectionObserver'in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting&&!done){done=true;send('ДОЧИТАНА ДО КОНЦА');}});
+    },{threshold:0.5}).observe(sig);
+  }
+})();
+</script>
 </body>
 </html>
