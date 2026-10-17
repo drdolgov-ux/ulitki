@@ -9,21 +9,70 @@
 <style>
   :root{--paper:#fdfaf6;--ink:#2b2420;--muted:#8a7a6e;--line:#eee4d9}
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{background:radial-gradient(ellipse 80% 60% at 50% 40%,#fbe7ea 0%,var(--paper) 70%);color:var(--ink);
-    font-family:"Georgia","Times New Roman",serif;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:24px 16px;-webkit-font-smoothing:antialiased}
+  body{background:var(--paper);color:var(--ink);font-family:"Georgia","Times New Roman",serif;-webkit-font-smoothing:antialiased}
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px 40px;
+    background:radial-gradient(ellipse 80% 60% at 50% 40%,#fbe7ea 0%,var(--paper) 70%)}
   .frame{background:#fff;padding:12px 12px 14px;border:1px solid var(--line);box-shadow:0 12px 36px rgba(60,40,20,.12);
     width:min(560px,100%);transform:rotate(-1.2deg);opacity:0;animation:in 1.4s ease-out .2s forwards}
-  .frame img{display:block;width:100%;max-height:72svh;object-fit:contain}
-  p{margin-top:28px;color:var(--muted);font-style:italic;font-size:18px;letter-spacing:.02em;opacity:0;animation:in 1.4s ease-out 1.2s forwards}
-  @keyframes in{to{opacity:1;transform:rotate(-1.2deg) translateY(0)}}
-  p{transform:none}@keyframes inp{to{opacity:1}}
-  p{animation-name:inp}
+  .frame img{display:block;width:100%;max-height:68svh;object-fit:contain}
+  .hero p{margin-top:28px;color:var(--muted);font-style:italic;font-size:18px;opacity:0;animation:inp 1.4s ease-out 1.2s forwards}
+  .hint{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--muted);font:13px system-ui,sans-serif;animation:bob 2.4s ease-in-out infinite}
+  .hero{position:relative}
+  @keyframes in{to{opacity:1}}
+  @keyframes inp{to{opacity:1}}
+  @keyframes bob{50%{transform:translateY(6px)}}
+  .letter{max-width:600px;margin:0 auto;padding:64px 20px 96px;font-size:19px;line-height:1.6}
+  .letter p{margin:0 0 1.1em}
+  .letter ul{margin:0 0 1.1em 1.2em}
+  .letter li{margin-bottom:.5em}
+  .letter .sig{margin-top:2em}
+  .snail{width:56px;margin:0 auto 36px;display:block;opacity:.85}
+  .rule{width:48px;height:1px;background:var(--muted);margin:0 auto 36px;opacity:.5}
 </style>
 </head>
 <body>
+<section class="hero">
   <div class="frame"><img alt="" src="ulitki.jpg"></div>
   <p>Для Риты. Октябрь 2026.</p>
+  <div class="hint">листай вниз ↓</div>
+</section>
+
+<section class="letter">
+  <svg class="snail" viewBox="0 0 120 80" aria-hidden="true">
+    <path d="M10 66 Q40 70 108 66 Q112 60 104 56 L92 56 Q100 30 76 22 Q50 16 44 40 Q40 58 62 58 Q76 58 74 44 Q72 34 62 36" fill="none" stroke="#2b2420" stroke-width="3" stroke-linecap="round"/>
+    <path d="M100 56 Q106 40 112 30 M100 56 Q100 40 102 28" stroke="#2b2420" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="112" cy="29" r="3" fill="#c9566c"/><circle cx="102" cy="27" r="3" fill="#c9566c"/>
+  </svg>
+
+  <p>Рита, привет.</p>
+
+  <p>Хочу, чтобы у тебя было это письмо. Я не ожидаю ответа.</p>
+
+  <p>Спасибо за наш последний разговор. Было больно. Ты отзеркалила меня — и это лучшее, что ты сделала в наших отношениях. Какие-то вещи я понимаю, только почувствовав их на себе. Жаль, что таких разговоров не было раньше: я плохо принимаю критику, хотя сам выдаю самую жёсткую её версию. И жаль, что я так редко спрашивал, что ты думаешь о нас.</p>
+
+  <p>Главное, в чём я виноват: после каждой ссоры я замолкал. Ты просила только одного — оставаться на связи, а я исчезал. Я думал, что берегу тебя от резких слов, а для тебя это было больнее любого моего мата.</p>
+
+  <p>Я не замечал, как сильно ты менялась. Самое ценное, что я узнал о тебе за этот год, — ты умеешь меняться к лучшему по-настоящему. Я ни в ком этого настолько не встречал. Последнюю половину наших отношений тянула на себе ты, а я обижался на мелкие промахи. Главного в себе я даже не начинал менять: во мне жила одна старая обида, которую мне было трудно простить.</p>
+
+  <p>Прости, что моя семейная ситуация вошла в нашу жизнь. Это было моё, а платила ты.</p>
+
+  <p>В последний раз обида переросла в мстительность. Мне не нужны другие женщины. Я сделал это от боли — чтобы причинить боль тебе. Я не ищу оправданий.</p>
+
+  <p>Мои замечания о внешности ранили тебя несправедливо: я любил тебя всю, целиком — со шрамами, с запахом, с носом, который так любил целовать. И отдельно прошу прощения за то слово, которым назвал тебя, когда тебе и так было тяжело. Ему нет оправдания.</p>
+
+  <p>Помнишь, на первом свидании ты сказала, как сильно я изменил свою внешность? Я, как и ты, сделал себя сам — и меняться умею:</p>
+  <ul>
+    <li>Разговоры о том, что женщинам живётся легче, я прекратил.</li>
+    <li>Вспышки злости с матом почти прошли, но отчасти я заменил их на избегание — и в последний раз снова ушёл. Я знаю, что могу выслушать тебя до конца, и хочу, чтобы в следующий раз так и было.</li>
+    <li>Я решил отказаться от стимуляторов.</li>
+    <li>Я работаю с психологом и изучил почти всё о своих диагнозах.</li>
+  </ul>
+
+  <p>Я не имею права ни о чём просить. Но если когда-нибудь захочешь сказать, что ещё ты видела во мне со стороны, — для меня это будет важнее любого мнения. Когда захочешь, если захочешь.</p>
+
+  <p>Спасибо за всё. Отношения с тобой — одни из лучших в моей жизни. Я снова почувствовал себя студентом.</p>
+
+  <p class="sig">Сергей</p>
+</section>
 </body>
 </html>
