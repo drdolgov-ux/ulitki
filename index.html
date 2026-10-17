@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex, nofollow">
+<title>Улитки</title>
+<style>
+  :root{--paper:#fdfaf6;--ink:#2b2420;--muted:#8a7a6e;--line:#eee4d9}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:radial-gradient(ellipse 80% 60% at 50% 40%,#fbe7ea 0%,var(--paper) 70%);color:var(--ink);
+    font-family:"Georgia","Times New Roman",serif;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:24px 16px;-webkit-font-smoothing:antialiased}
+  .frame{background:#fff;padding:12px 12px 14px;border:1px solid var(--line);box-shadow:0 12px 36px rgba(60,40,20,.12);
+    width:min(560px,100%);transform:rotate(-1.2deg);opacity:0;animation:in 1.4s ease-out .2s forwards}
+  .frame img{display:block;width:100%;max-height:72svh;object-fit:contain}
+  p{margin-top:28px;color:var(--muted);font-style:italic;font-size:18px;letter-spacing:.02em;opacity:0;animation:in 1.4s ease-out 1.2s forwards}
+  @keyframes in{to{opacity:1;transform:rotate(-1.2deg) translateY(0)}}
+  p{transform:none}@keyframes inp{to{opacity:1}}
+  p{animation-name:inp}
+</style>
+</head>
+<body>
+  <div class="frame"><img alt="" src="ulitki.jpg"></div>
+  <p>Для Риты. Октябрь 2026.</p>
+</body>
+</html>
