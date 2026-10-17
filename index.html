@@ -31,7 +31,13 @@
   .letter figure{margin:2em auto 2em;width:min(460px,100%)}
   .letter figure .frame{transform:rotate(1deg);opacity:1;animation:none;padding:10px 10px 12px}
   .letter figure img{display:block;width:100%}
+  html.framed .hero{min-height:auto;padding:28px 16px 8px}
+  html.framed .hint{display:none}
+  html.framed .frame{animation:none;opacity:1}
+  html.framed .hero p{animation:none;opacity:1}
+  html.framed .letter{padding-top:40px}
 </style>
+<script>if(window.top!==window.self){document.documentElement.classList.add('framed')}</script>
 </head>
 <body>
 <section class="hero">
