@@ -102,12 +102,19 @@
     if(localStorage.getItem('ulitki_me')==='1')return;
   }catch(e){}
   var U='https://docs.google.com/forms/d/e/1FAIpQLSdOUt0lgvBzLKNkCybZZ_szyg4NAybZ7tsuIPpaYbAcd5b0rA/formResponse';
+  var T0=Date.now();
   function dev(){var u=navigator.userAgent;return /iPhone/.test(u)?'iPhone':/iPad/.test(u)?'iPad':/Android/.test(u)?'Android':/Macintosh/.test(u)?'Mac':/Windows/.test(u)?'Windows':'другое';}
   function info(){
     var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone;}catch(e){}
     var d=new Date(),t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
     var src='';try{src=new URLSearchParams(location.search).get('utm_source')||'';}catch(e){}
-    return [t+' местное',tz,navigator.language,dev(),screen.width+'x'+screen.height,src?'из: '+src:'без метки'].join(' · ');
+    var ua=navigator.userAgent||'',langs='';
+    try{langs=(navigator.languages&&navigator.languages.length?navigator.languages.slice(0,3):[navigator.language]).join(',');}catch(e){langs=navigator.language||'';}
+    var flags=[];
+    if(navigator.webdriver)flags.push('АВТОМАТ');
+    if(/bot|crawl|spider|headless|preview|scan|fetch|python|curl|wget|lighthouse|phantom/i.test(ua))flags.push('БОТ-UA');
+    if((navigator.maxTouchPoints||0)>0)flags.push('тач');
+    return [t+' местное',tz,langs,dev(),screen.width+'x'+screen.height,'окно '+window.innerWidth+'x'+window.innerHeight,src?'из: '+src:'без метки',Math.round((Date.now()-T0)/1000)+' с на странице'].concat(flags,['UA: '+ua.slice(0,160)]).join(' · ');
   }
   function send(ev){
     try{
@@ -125,6 +132,8 @@
       es.forEach(function(e){if(e.isIntersecting&&!done){done=true;send('ДОЧИТАНА ДО КОНЦА');}});
     },{threshold:0.5}).observe(sig);
   }
+  setTimeout(function(){if(!document.hidden)send('НА СТРАНИЦЕ 2 МИН');},120000);
+  setTimeout(function(){if(!document.hidden)send('НА СТРАНИЦЕ 5 МИН');},300000);
 })();
 </script>
 </body>
